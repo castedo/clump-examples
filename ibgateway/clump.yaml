@@ -1,0 +1,32 @@
+name:     ibgateway
+arch:     all
+summary:  Interactive Brokers Gateway
+requires:
+- java
+components:
+  unixjar:
+    url: https://download2.interactivebrokers.com/download/unixmacosx_latest.jar
+    sha1: dde656d98dc67894c0bfac465c734bb92b7dc4df
+    file: unixmacosx_latest.jar
+cmake: |
+  add_custom_target(IBJts ALL COMMAND jar xf unixjar/unixmacosx_latest.jar)
+  install(DIRECTORY IBJts/
+          DESTINATION /usr/share/ibgateway
+          FILES_MATCHING PATTERN "*.jar")
+  install(DIRECTORY DESTINATION /var/ibgateway
+          DIRECTORY_PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ
+                                GROUP_EXECUTE GROUP_WRITE GROUP_READ
+                                WORLD_EXECUTE WORLD_READ)
+  install(FILES jts.ini DESTINATION /var/ibgateway
+          PERMISSIONS OWNER_WRITE OWNER_READ
+                      GROUP_WRITE GROUP_READ
+                      WORLD_READ)
+ownership:
+  /var/ibgateway: daemon:daemon
+
+changelog:
+- version: 3.2015.01.05
+  when: Thu Jan 08 2015
+  who: Castedo Ellerman <castedo@castedo.com>
+  what: update to latest downloaded unix jar from IB
+
