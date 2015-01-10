@@ -1,6 +1,8 @@
 Name: varbjars
 Arch: all
-Requires: [ java ]
+Requires:
+- rhel: java
+  ubuntu: java-common
 summary: jar dependencies for varbj
 
 cmake: |
@@ -10,11 +12,11 @@ cmake: |
 
 components:
   gson:
-    url: http://clients.castedo.com/cel/sos/gson-2.2.2.jar
+    url: http://dist.brokertron.com/sos/gson-2.2.2.jar
     sha1: 53bfcd3c8e310d1493b2691484525ed90b04e236
     file: gson-2.2.2.jar
   joda:
-    url: http://clients.castedo.com/cel/sos/joda-time-1.6.2.jar
+    url: http://dist.brokertron.com/sos/joda-time-1.6.2.jar
     sha1: 7a0525fe460ef5b99ea3152e6d2c0e4f24f04c51
     file: joda-time-1.6.2.jar
 
