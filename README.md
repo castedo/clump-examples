@@ -29,3 +29,7 @@ Notable clump features exhibited:
 * embedded inline cmake install code extracting a source jar and installing its
   contents
 
+Example boost
+-------------
+[boost/](boost/) is an example packaging static libraries and header files for
+certain boost libraries in C++11.
