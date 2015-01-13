@@ -1,0 +1,57 @@
+name:        boost-devel-cpp11
+summary:     Boost C++ Libraries
+license:     BSD-3-Clause
+description: |
+  Boost provides free peer-reviewed portable C++ source libraries. The
+  emphasis is on libraries that work well with the C++ Standard Library.
+  One goal is to establish "existing practice" and provide reference
+  implementations so that the Boost libraries are suitable for eventual
+  standardization. Some of the libraries have already been proposed for
+  inclusion in the C++ Standards Committee's upcoming C++ Standard
+  Library Technical Report.
+
+components:
+  boost:
+    url: boost_1_56_0.tar.bz2
+    sha1: f94bb008900ed5ba1994a1072140590784b9b5df
+
+install: |
+  set -e
+  install -d $DESTDIR/usr/lib64
+  install -d $DESTDIR/usr/include
+  cd boost
+  ./bootstrap.sh
+  ./b2 -q \
+    --libdir=$DESTDIR/usr/lib64 \
+    --includedir=$DESTDIR/usr/include \
+    --layout=tagged \
+    --with-date_time \
+    --with-exception \
+    --with-filesystem \
+    --with-log \
+    --with-math \
+    --with-program_options \
+    --with-random \
+    --with-regex \
+    --with-system \
+    --with-test \
+    --with-thread \
+    --with-timer \
+    link=static \
+    threading=multi,single \
+    toolset=gcc \
+    cxxflags=-fPIC \
+    cxxflags=-std=c++11 \
+    cflags=-fPIC \
+    install
+
+changelog:
+- version: 1.56.0.3
+  when: Thu Jan 08 2015
+  who: Castedo Ellerman <castedo@castedo.com>
+  what: put install code inside clump.yaml
+- version: 1.56.0.2
+  when: Sat Jan 03 2015
+  who: Castedo Ellerman <castedo@castedo.com>
+  what: boost 1.56.0 packaged with clump
+
