@@ -1,0 +1,20 @@
+name: python-py4j
+summary: py4j
+arch: all
+requires:
+- python
+
+install: |
+  cd py4j
+  python setup.py install --root=$DESTDIR
+components:
+  py4j:
+    url: https://pypi.python.org/packages/source/p/py4j/py4j-0.8.2.1.tar.gz
+    sha1: bbf8994fca68d73488c997ed8f2b86c67bdf82d7
+
+changelog:
+- version: 0.8.2.1.2
+  who: Castedo Ellerman <castedo@castedo.com>
+  when: Mon May 11 2015
+  what: initial
+
