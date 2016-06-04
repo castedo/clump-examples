@@ -7,7 +7,7 @@ requires:
 components:
   unixjar:
     url: https://download2.interactivebrokers.com/download/unixmacosx_latest.jar
-    sha1: 07b37d835d4e5da66abb7a1eb4aae31d0de88abd
+    sha1: 801ed367d0b0a0b410c80791ea07dadceac013f6
     file: unixmacosx_latest.jar
 cmake: |
   add_custom_target(IBJts ALL COMMAND jar xf unixjar/unixmacosx_latest.jar)
@@ -26,9 +26,12 @@ ownership:
   /var/ibgateway: daemon:daemon
 
 changelog:
+- version: 3.2016.06.04
+  when: Sat Jun 04 2016
+  who: Castedo Ellerman <castedo@castedo.com>
+  what: downloaded latest unix jar from IB
 - version: 3.2015.09.30
   when: Wed Sep 30 2015
-  who: Castedo Ellerman <castedo@castedo.com>
   what: downloaded latest unix jar from IB
 - version: 3.2015.01.10
   when: Sat Jan 10 2015
